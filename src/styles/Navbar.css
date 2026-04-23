@@ -1,0 +1,303 @@
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 64px;
+  background: rgba(8,11,16,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--neon);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--neon);
+  box-shadow: 0 0 12px var(--neon);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:.6; transform:scale(.8); }
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-link {
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--neon);
+  transition: width 0.25s;
+}
+
+.nav-link:hover,
+.nav-link.active { color: var(--neon); }
+
+.nav-link.active::after,
+.nav-link:hover::after { width: 100%; }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ── CARRITO ── */
+.nav-btn-cart {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid var(--border2);
+  color: var(--neon);
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+  transition: all 0.2s;
+  position: relative;
+}
+
+.nav-btn-cart:hover {
+  background: var(--neon);
+  color: var(--bg);
+  border-color: var(--neon);
+}
+
+.cart-icon { font-size: 0.9rem; }
+
+.cart-count {
+  background: var(--neon);
+  color: var(--bg);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn-cart:hover .cart-count {
+  background: var(--bg);
+  color: var(--neon);
+}
+
+/* ── AUTH BTNS ── */
+.nav-btn-outline {
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+
+.nav-btn-outline:hover { color: var(--neon); }
+
+.nav-btn-solid {
+  background: transparent;
+  border: 1px solid var(--neon);
+  color: var(--neon);
+  padding: 0.4rem 1.2rem;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  transition: all 0.2s;
+}
+
+.nav-btn-solid:hover {
+  background: var(--neon);
+  color: var(--bg);
+}
+
+/* ── USER BTN ── */
+.nav-user-wrap { position: relative; }
+
+.nav-user-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.35rem 0.75rem 0.35rem 0.35rem;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: border-color 0.2s;
+  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+}
+
+.nav-user-btn:hover { border-color: var(--border2); }
+
+.nav-avatar {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--neon), var(--neon2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--bg);
+  flex-shrink: 0;
+}
+
+.nav-user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.nav-user-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.nav-user-label {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  color: var(--text3);
+  letter-spacing: 0.06em;
+}
+
+/* ── DROPDOWN ── */
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 260px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  z-index: 200;
+  animation: dropIn 0.2s ease;
+}
+
+@keyframes dropIn {
+  from { opacity:0; transform:translateY(-8px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 1rem;
+}
+
+.dropdown-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--neon), var(--neon2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--bg);
+  flex-shrink: 0;
+}
+
+.dropdown-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.dropdown-email {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text3);
+  letter-spacing: 0.04em;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: var(--border);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.75rem 1rem;
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 0.85rem;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: all 0.15s;
+}
+
+.dropdown-item:hover {
+  background: rgba(0,255,200,0.05);
+  color: var(--text);
+}
+
+.dropdown-item span:first-child { font-size: 0.9rem; }
+
+.dropdown-badge {
+  margin-left: auto;
+  background: var(--neon);
+  color: var(--bg);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown-logout { color: var(--accent); }
+.dropdown-logout:hover { background: rgba(255,61,113,0.06); color: var(--accent); }
+
+@media (max-width: 768px) {
+  .nav-links    { display: none; }
+  .nav-btn-outline { display: none; }
+  .nav-user-info { display: none; }
+}

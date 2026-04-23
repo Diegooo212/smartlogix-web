@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #080b10;
+  --bg2: #0d1117;
+  --bg3: #111827;
+  --card: #0f1521;
+  --border: rgba(0,255,200,0.12);
+  --border2: rgba(0,255,200,0.25);
+  --neon: #00ffc8;
+  --neon2: #00d4ff;
+  --neon3: #7c3aed;
+  --accent: #ff3d71;
+  --text: #e2e8f0;
+  --text2: #94a3b8;
+  --text3: #475569;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Space Grotesk', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
+}

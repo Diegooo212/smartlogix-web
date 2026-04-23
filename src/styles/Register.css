@@ -1,0 +1,130 @@
+@import './Login.css';
+
+.register-card {
+  max-width: 500px;
+}
+
+/* ── STEPS ── */
+.reg-steps {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 1.25rem 2rem 0;
+}
+
+.reg-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reg-step-num {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text3);
+  background: var(--bg2);
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+
+.reg-step.active .reg-step-num {
+  background: var(--neon);
+  border-color: var(--neon);
+  color: var(--bg);
+  box-shadow: 0 0 12px rgba(0,255,200,0.3);
+}
+
+.reg-step-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text3);
+  letter-spacing: 0.06em;
+  transition: color 0.3s;
+}
+
+.reg-step.active .reg-step-label { color: var(--neon); }
+
+.reg-step-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  margin: 0 0.75rem;
+}
+
+/* ── FIELDS ROW ── */
+.auth-fields-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+/* ── STRENGTH ── */
+.strength-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.35rem;
+}
+
+.strength-bar {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.strength-seg {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  transition: background 0.3s;
+}
+
+.strength-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  min-width: 52px;
+  transition: color 0.3s;
+}
+
+/* ── CHECK ── */
+.auth-check-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--text2);
+}
+
+.auth-check-row input { accent-color: var(--neon); }
+.auth-check-label { cursor: pointer; }
+
+/* ── BTNS ROW ── */
+.auth-btns-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.auth-back {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text2);
+  padding: 0.85rem 1.25rem;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.auth-back:hover {
+  border-color: var(--border2);
+  color: var(--text);
+}
