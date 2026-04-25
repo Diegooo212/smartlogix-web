@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useCart } from '../context/CartContext'
 import '../styles/Home.css'
 
 const productos = [
@@ -30,7 +31,7 @@ const fmt      = (v) => '$' + Math.round(v).toLocaleString('es-CL')
 const fmtStock = (s) => s > 100 ? '+100 Unid.' : s > 50 ? '+50 Unid.' : `${s} Unid.`
 
 function Home() {
-  const navigate    = useNavigate()
+  const navigate             = useNavigate()
   const [catActiva, setCatActiva] = useState('Monitores')
 
   return (
@@ -41,7 +42,6 @@ function Home() {
         <div className="hero-grid"></div>
         <div className="hero-glow"></div>
 
-        {/* Partículas flotantes */}
         <div className="hero-particles">
           {[...Array(20)].map((_, i) => (
             <div key={i} className="particle" style={{
@@ -56,7 +56,7 @@ function Home() {
         </div>
 
         <div className="hero-txt">
-          <div className="hero-badge">◆ NUEVA TEMPORADA 2026</div>
+          <div className="hero-badge">◆ NUEVA TEMPORADA 2025</div>
           <h1 className="hero-title">
             Tecnología<br/>
             <span className="hero-grad hero-glitch" data-text="al límite">al límite</span>
@@ -72,6 +72,8 @@ function Home() {
           <div className="hero-stats-row">
             <StatCounter value={2400} suffix="+" label="Productos" />
             <StatCounter value={48}   suffix="h"  label="Despacho" />
+            <StatCounter value={4.9}  suffix="★"  label="Valoración" decimals={1} />
+            <StatCounter value={3}    suffix=""   label="Métodos pago" />
           </div>
         </div>
 
@@ -238,18 +240,18 @@ function Home() {
 
 /* ── STAT COUNTER ── */
 function StatCounter({ value, suffix, label, decimals = 0 }) {
-  const [count, setCount]   = useState(0)
-  const ref                 = useRef(null)
-  const started             = useRef(false)
+  const [count, setCount] = useState(0)
+  const ref               = useRef(null)
+  const started           = useRef(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting && !started.current) {
-        started.current = true
-        const duration  = 1800
-        const steps     = 60
-        const increment = value / steps
-        let current     = 0
+        started.current  = true
+        const duration   = 1800
+        const steps      = 60
+        const increment  = value / steps
+        let current      = 0
         const timer = setInterval(() => {
           current += increment
           if (current >= value) {
@@ -261,7 +263,6 @@ function StatCounter({ value, suffix, label, decimals = 0 }) {
         }, duration / steps)
       }
     }, { threshold: 0.5 })
-
     if (ref.current) observer.observe(ref.current)
     return () => observer.disconnect()
   }, [value, decimals])
@@ -278,10 +279,12 @@ function StatCounter({ value, suffix, label, decimals = 0 }) {
 
 /* ── PRODUCTO CARD ── */
 function ProductoCard({ p, esNuevo, onClick }) {
+  const { agregar }             = useCart()
   const [agregado, setAgregado] = useState(false)
 
   const handleCart = (e) => {
     e.stopPropagation()
+    agregar(p)
     setAgregado(true)
     setTimeout(() => setAgregado(false), 1200)
   }
